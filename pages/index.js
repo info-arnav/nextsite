@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import Navigation from "./api/navigation";
 import Footer from "./api/footer";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
