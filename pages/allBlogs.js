@@ -36,7 +36,7 @@ export default function Blogs() {
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
-              ],,
+              ],
             }),
           }}
         />

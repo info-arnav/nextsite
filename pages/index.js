@@ -277,7 +277,7 @@ export default function Home() {
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
-              ],,
+              ],
             }),
           }}
         />
