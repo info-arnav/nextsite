@@ -21,9 +21,23 @@ export default function Home() {
           sap(res.data[4]);
         })
         .then((e) => setLoading(true))
-        .catch((e) => {
+        .catch(async (e) => {
           if (e.response) {
-            router.push("/error");
+            await axios
+              .get("/api/homeData")
+              .then((res) => {
+                sml(res.data[0][0]);
+                srp(res.data[1]);
+                stp(res.data[2]);
+                smv(res.data[3]);
+                sap(res.data[4]);
+              })
+              .then((e) => setLoading(true))
+              .catch((e) => {
+                if (e.response) {
+                  router.push("/error");
+                }
+              });
           }
         });
     }
