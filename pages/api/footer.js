@@ -65,7 +65,7 @@ export default function Footer() {
               <li>
                 <a href="https://www.linkedin.com/in/arnav-gupta-0922341a9/">
                   Linkedin
-                </a>
+                </a>{" "}
               </li>
             </ul>
           </div>
