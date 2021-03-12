@@ -65,7 +65,7 @@ export default function Article() {
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
-              ],,
+              ],
             }),
           }}
         />
