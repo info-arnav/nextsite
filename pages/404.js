@@ -15,7 +15,7 @@ export default function Error404() {
               "@context": "http://schema.org",
               "@type": "WebSite",
               colleague: [],
-              image: "https://www.arnavgupta.net/logo.png",
+              image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
               url: "https://www.arnavgupta.net/",
               sameAs: [

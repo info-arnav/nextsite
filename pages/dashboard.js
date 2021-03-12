@@ -69,7 +69,7 @@ export default function Dashboard() {
               "@context": "http://schema.org",
               "@type": "WebSite",
               colleague: [],
-              image: "https://www.arnavgupta.net/logo.png",
+              image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
               url: "https://www.arnavgupta.net/dashboard",
               sameAs: [

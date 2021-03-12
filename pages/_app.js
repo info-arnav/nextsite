@@ -21,12 +21,12 @@ function MyApp({ Component, pageProps }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <link rel="apple-touch-icon" href={"/logo.png"} />
+        <link rel="apple-touch-icon" href={"/logo.webp"} />
         <link rel="manifest" href={"/manifest.json"} />
         <meta property="og:url" content="https://www.arnavgupta.net/" />
         <meta
           property="og:image"
-          content={"https://www.arnavgupta.net/logo.png"}
+          content={"https://www.arnavgupta.net/logo.webp"}
           alt="The logo of the website which showcases a symbol of infinity combined to wires"
         />
         <meta property="og:site_name" content={"Infinity"} />
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:site" content="@infinity" />
         <meta
           name="twitter:image"
-          content={"https://www.arnavgupta.net/logo.png"}
+          content={"https://www.arnavgupta.net/logo.webp"}
           alt="The logo of the website which showcases a symbol of infinity combined to wires"
         />
         <meta

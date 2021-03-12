@@ -58,7 +58,7 @@ export default function Article() {
               "@context": "http://schema.org",
               "@type": "WebSite",
               colleague: [],
-              image: "https://www.arnavgupta.net/logo.png",
+              image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
               url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               sameAs: [
@@ -81,7 +81,7 @@ export default function Article() {
                 "@id": `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               },
               headline: title,
-              image: ["https://www.arnavgupta.net/logo.png"],
+              image: ["https://www.arnavgupta.net/logo.webp"],
               datePublished: "",
               dateModified: "",
               author: {
@@ -93,7 +93,7 @@ export default function Article() {
                 name: "Infinity",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.arnavgupta.net/logo.png",
+                  url: "https://www.arnavgupta.net/logo.webp",
                 },
               },
             }),
