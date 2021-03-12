@@ -46,10 +46,9 @@ export default function Article() {
           }
         });
     }
-    fetcher();
-    fetcher2();
+    id != "[id]" ? fetcher().then((e) => fetcher2()) : "";
     update();
-  }, []);
+  }, [id]);
   return (
     <div>
       <Head>
