@@ -29,24 +29,23 @@ export default function Article() {
     };
     async function fetcher() {
       await axios
-        .get(`/api/single/index`)
-        .then((res) => setData(res.data))
-        .catch((e) => {
-          if (e.response) {
-          }
-        });
-    }
-    async function fetcher2() {
-      await axios
         .get(`/api/single/${id}`)
         .then((res) => setData(res.data))
-        .catch((e) => {
+        .catch(async (e) => {
           if (e.response) {
-            router.push("/");
+            await axios
+              .get(`/api/single/${id}`)
+              .then((res) => setData(res.data))
+              .catch((e) => {
+                if (e.response) {
+                  router.push("/");
+                }
+              });
           }
         });
     }
-    id != "[id]" ? fetcher().then((e) => fetcher2()) : "";
+
+    id != "[id]" ? fetcher() : "";
     update();
   }, [id]);
   return (
