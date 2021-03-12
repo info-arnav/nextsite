@@ -72,7 +72,11 @@ export default function Dashboard() {
               image: "https://www.arnavgupta.net/logo.png",
               name: "Arnav Gupta",
               url: "https://www.arnavgupta.net/dashboard",
-              sameAs: [],
+              sameAs: [
+                "https://www.instagram.com/infinity.newtech/",
+                "https://www.facebook.com/infinity.newTechnology",
+                "https://twitter.com/infinityNewTech",
+              ],,
             }),
           }}
         />

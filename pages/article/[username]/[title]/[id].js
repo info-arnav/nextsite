@@ -61,7 +61,11 @@ export default function Article() {
               image: "https://www.arnavgupta.net/logo.png",
               name: "Arnav Gupta",
               url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
-              sameAs: [],
+              sameAs: [
+                "https://www.instagram.com/infinity.newtech/",
+                "https://www.facebook.com/infinity.newTechnology",
+                "https://twitter.com/infinityNewTech",
+              ],,
             }),
           }}
         />
