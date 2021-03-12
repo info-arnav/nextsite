@@ -915,6 +915,7 @@ export default function Home() {
                       height: "100%",
                       marginTop: "5px",
                       marginBottom: "5px",
+                      width: "100%",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -977,6 +978,7 @@ export default function Home() {
                     style={{
                       borderRadius: "20px",
                       height: "100%",
+                      width: "100%",
                       marginTop: "5px",
                       marginBottom: "5px",
                       backgroundRepeat: "no-repeat",
