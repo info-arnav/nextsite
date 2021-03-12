@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow: /notFound
+Disallow: /Dashboard
+Allow: /blogs/*
+Allow: /blogs/*/*
+Sitemap : https://www.arnavgupta.net/sitemap.xml
