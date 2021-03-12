@@ -63,6 +63,7 @@ export default function Article() {
               url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
+                "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
               ],

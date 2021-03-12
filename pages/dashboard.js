@@ -74,6 +74,7 @@ export default function Dashboard() {
               url: "https://www.arnavgupta.net/dashboard",
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
+                "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
               ],

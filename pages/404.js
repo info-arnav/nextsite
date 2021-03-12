@@ -20,6 +20,7 @@ export default function Error404() {
               url: "https://www.arnavgupta.net/",
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
+                "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
                 "https://www.facebook.com/infinity.newTechnology",
                 "https://twitter.com/infinityNewTech",
               ],

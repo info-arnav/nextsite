@@ -50,16 +50,22 @@ export default function Footer() {
             <h4>Follow Us</h4>
             <ul>
               <li>
-                <Link href="#">Facebook</Link>
+                <a href="https://www.facebook.com/infinity.newTechnology">
+                  Facebook
+                </a>
               </li>
               <li>
-                <Link href="#">Twitter</Link>
+                <a href="https://twitter.com/infinityNewTech">Twitter</a>
               </li>
               <li>
-                <Link href="#">Instagram</Link>
+                <a href="https://www.instagram.com/infinity.newtech/">
+                  Instagram
+                </a>
               </li>
               <li>
-                <Link href="#">Linkedin</Link>
+                <a href="https://www.linkedin.com/in/arnav-gupta-0922341a9/">
+                  Linkedin
+                </a>
               </li>
             </ul>
           </div>
