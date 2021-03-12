@@ -29,7 +29,7 @@ export default function Article() {
     };
     async function fetcher() {
       await axios
-        .get(`/api/single`)
+        .get(`/api/single/index`)
         .then((res) => setData(res.data))
         .catch((e) => {
           if (e.response) {
