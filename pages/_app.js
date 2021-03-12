@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="https://www.arnavgupta.net/" />
         <meta
           property="og:image"
-          content={"/logo.png"}
+          content={"https://www.arnavgupta.net/logo.png"}
           alt="The logo of the website which showcases a symbol of infinity combined to wires"
         />
         <meta property="og:site_name" content={"Infinity"} />
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:site" content="@infinity" />
         <meta
           name="twitter:image"
-          content={"/logo.png"}
+          content={"https://www.arnavgupta.net/logo.png"}
           alt="The logo of the website which showcases a symbol of infinity combined to wires"
         />
         <meta

@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@tinymce/tinymce-react": "^3.10.3",
     "algoliasearch": "^4.8.5",
     "axios": "^0.21.1",
