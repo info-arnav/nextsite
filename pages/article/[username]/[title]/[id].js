@@ -54,6 +54,7 @@ export default function Article() {
   }, [id]);
   return (
     <div>
+      {" "}
       <Head>
         <script
           type="application/ld+json"
