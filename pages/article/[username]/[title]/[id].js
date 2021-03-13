@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import jwts from "jwt-simple";
 
-export default function Article() {
+export default function Article({ res }) {
   const router = useRouter();
   const { username, title, id } = router.query;
-  const [data, setData] = useState({ blog: "" });
+  const [data, setData] = useState(res);
   useEffect(() => {
     const update = async () => {
       localStorage.getItem("userData")
@@ -27,27 +27,8 @@ export default function Article() {
           : ""
         : "";
     };
-    async function fetcher() {
-      await axios
-        .get(`/api/single/${id}`)
-        .then((res) => setData(res.data))
-        .catch(async (e) => {
-          if (e.response) {
-            await axios
-              .get(`/api/single/${id}`)
-              .then((res) => setData(res.data))
-              .catch((e) => {
-                if (e.response) {
-                  router.push("/");
-                }
-              });
-          }
-        });
-    }
-
-    id != "[id]" ? fetcher() : "";
     update();
-  }, [id]);
+  }, []);
   return (
     <div>
       <Head>
@@ -133,8 +114,30 @@ export default function Article() {
             .slice(0, 15)}`}
         />
       </Head>
+
       <Navigation />
       <Footer></Footer>
     </div>
   );
+}
+export async function getServerSideProps({ params }) {
+  let response = {
+    data: "",
+  };
+  await axios
+    .get(`https://www.arnavgupta.net/api/single/${params.id}`)
+    .then(async (e) => {
+      response = e;
+    })
+    .catch(async (error) => {
+      if (error.response) {
+        response = await axios.get(
+          `https://www.arnavgupta.net/api/single/${params.id}`
+        );
+      }
+    });
+  const res = response.data;
+  return {
+    props: { res },
+  };
 }

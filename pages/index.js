@@ -828,7 +828,7 @@ export default function Home({ res }) {
   );
 }
 export async function getStaticProps() {
-  let response;
+  let response = { data: "" };
   await axios
     .get("https://www.arnavgupta.net/api/homeData")
     .then(async (e) => {
