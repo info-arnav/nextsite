@@ -1,12 +1,15 @@
 import Head from "next/head";
 import Footer from "../../../api/footer";
 import Navigation from "../../../api/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import jwts from "jwt-simple";
 
-export default function Article({ res }) {
-  const [data, setData] = useState(res.data);
+export default function Article() {
+  const router = useRouter();
+  const { username, title, id } = router.query;
+  const [data, setData] = useState({ blog: "" });
   useEffect(() => {
     const update = async () => {
       localStorage.getItem("userData")
@@ -19,13 +22,32 @@ export default function Article({ res }) {
                 localStorage.getItem("userData"),
                 "Arnav30080422020731017817087571441"
               ).username,
-              post: data._id,
+              post: id,
             })
           : ""
         : "";
     };
+    async function fetcher() {
+      await axios
+        .get(`/api/single/${id}`)
+        .then((res) => setData(res.data))
+        .catch(async (e) => {
+          if (e.response) {
+            await axios
+              .get(`/api/single/${id}`)
+              .then((res) => setData(res.data))
+              .catch((e) => {
+                if (e.response) {
+                  router.push("/");
+                }
+              });
+          }
+        });
+    }
+
+    id != "[id]" ? fetcher() : "";
     update();
-  }, []);
+  }, [id]);
   return (
     <div>
       <Head>
@@ -38,7 +60,7 @@ export default function Article({ res }) {
               colleague: [],
               image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
-              url: `https://www.arnavgupta.net/article/${data.username}/${data.title}/${data._id}`,
+              url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
@@ -56,15 +78,15 @@ export default function Article({ res }) {
               "@type": "Article",
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://www.arnavgupta.net/article/${data.username}/${data.title}/${data._id}`,
+                "@id": `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               },
-              headline: data.title,
+              headline: title,
               image: ["https://www.arnavgupta.net/logo.webp"],
               datePublished: "",
               dateModified: "",
               author: {
                 "@type": "Person",
-                name: data.username,
+                name: username,
               },
               publisher: {
                 "@type": "Organization",
@@ -77,12 +99,12 @@ export default function Article({ res }) {
             }),
           }}
         />
-        <title>Infinity | {data.title}</title>
-        <meta property="og:title" content={`Infinity | ${data.title}`} />
-        <meta name="twitter:title" content={`Infinity | ${data.title}`} />
+        <title>Infinity | {title}</title>
+        <meta property="og:title" content={`Infinity | ${title}`} />
+        <meta name="twitter:title" content={`Infinity | ${title}`} />
         <meta
           name="description"
-          content={`${data.title} | by ${data.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -92,7 +114,7 @@ export default function Article({ res }) {
         />
         <meta
           property="og:description"
-          content={`${data.title} | by ${data.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -102,7 +124,7 @@ export default function Article({ res }) {
         />
         <meta
           name="twitter:description"
-          content={`${data.title} | by ${data.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -115,19 +137,4 @@ export default function Article({ res }) {
       <Footer></Footer>
     </div>
   );
-}
-
-export async function getStaticProps(context) {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const id = context.parmas.id;
-  const res = await fetch(`/api/single/${id}`);
-
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      res,
-    },
-  };
 }
