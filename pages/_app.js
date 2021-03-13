@@ -14,14 +14,17 @@ function MyApp({ Component, pageProps }) {
     <div>
       <Head>
         <meta charSet="utf-8" />
-        <script type="application/ld+json">
-          {{
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            url: "http://www.arnavgupta.net",
-            logo: "http://www.arnavgupta.net/logo.png",
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              url: "http://www.arnavgupta.net",
+              logo: "http://www.arnavgupta.net/logo.png",
+            }),
           }}
-        </script>
+        ></script>
         <link
           rel="icon"
           href={"/favicon.ico"}
