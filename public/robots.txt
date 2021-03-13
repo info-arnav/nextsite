@@ -4,7 +4,7 @@ Disallow: /notFound
 Disallow: /Dashboard
 Disallow: /api/*
 Allow: /article/*
-Allow: /blogs/*/*
-Allow: /blogs/*/*/*
-Allow: /blogs/*/*/*
+Allow: /article/*/*
+Allow: /article/*/*/*
+Allow: /article/*/*/*
 Sitemap : https://www.arnavgupta.net/sitemap.xml
