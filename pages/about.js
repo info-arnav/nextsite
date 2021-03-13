@@ -30,15 +30,18 @@ export default function About() {
         <meta name="twitter:title" content="Infinity | About" />
         <meta
           name="description"
-          content="About Us | Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
+          content="About Us | Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
+"
         />
         <meta
           property="og:description"
-          content="About Us | Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
+          content="About Us | Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
+"
         />
         <meta
           name="twitter:description"
-          content="About Us | Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
+          content="About Us | Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
+"
         />
       </Head>
       <Navigation />

@@ -21,9 +21,8 @@ export default function Footer() {
               Infinity offers an opportunity to every blogger out there to
               display their thoughts in front of everyone. ‘Better to write for
               yourself and have no public, than to write for the public and have
-              no self’. Passionate bloggers is a website where you can write
-              your thoughts and let people live in a thousand worlds before they
-              die.
+              no self’. Infinity is a website where you can write your thoughts
+              and let people live in a thousand worlds before they die.
             </p>
             <p>© 2020 Infinity, All rights reserved</p>
           </div>
