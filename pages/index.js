@@ -821,6 +821,7 @@ export default function Home({ res }) {
             );
           })}
         </div>
+        {""}
       </div>
       <Footer></Footer>
     </div>
