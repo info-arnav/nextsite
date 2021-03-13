@@ -137,11 +137,7 @@ export default function Article() {
       ) : (
         <Head>
           <title>Infinity | Loading</title>
-          <meta property="og:title" content={`Infinity | Loading`} />
-          <meta name="twitter:title" content={`Infinity | Loading`} />
           <meta name="description" content={`loading.....`} />
-          <meta property="og:description" content={`loading.....`} />
-          <meta name="twitter:description" content={`loading.....`} />
         </Head>
       )}
       <Navigation />
