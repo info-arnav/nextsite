@@ -122,7 +122,22 @@ export default function Article({ res }) {
 }
 export async function getServerSideProps({ params }) {
   let response = {
-    data: "",
+    data: {
+      date: "date",
+      ddate: "ddate",
+      likes: [],
+      bookmarks: [],
+      views: [],
+      comments: [],
+      _id: "6048646cb36f7b029c05210e",
+      tags: "tags",
+      image: "logo.png",
+      blog: "blog",
+      title: "title",
+      userdp: "logo.png",
+      username: "username",
+      __v: 0,
+    },
   };
   await axios
     .get(`https://www.arnavgupta.net/api/single/${params.id}`)
