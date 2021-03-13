@@ -2,6 +2,9 @@
 User-agent: *
 Disallow: /notFound
 Disallow: /Dashboard
-Allow: /blogs/*
+Disallow: /api/*
+Allow: /article/*
 Allow: /blogs/*/*
+Allow: /blogs/*/*/*
+Allow: /blogs/*/*/*
 Sitemap : https://www.arnavgupta.net/sitemap.xml
