@@ -82,7 +82,7 @@ export default function Footer() {
                     placeholder="Email Id"
                     name="email"
                   />
-                  <br></br>
+                  <br></br>{" "}
                   <input
                     type="text"
                     className="form-control"
