@@ -827,7 +827,13 @@ export default function Home({ res }) {
   );
 }
 export async function getStaticProps() {
-  const response = await axios.get("https://www.arnavgupta.net/api/homeData");
+  const response = await axios
+    .get("https://www.arnavgupta.net/api/homeData")
+    .catch(async (error) => {
+      if (error.response) {
+        await axios.get("https://www.arnavgupta.net/api/homeData");
+      }
+    });
   const res = response.data;
   return {
     props: { res },
