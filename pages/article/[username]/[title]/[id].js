@@ -63,8 +63,8 @@ export default function Article({ res }) {
               },
               headline: title,
               image: [data.image],
-              datePublished: "",
-              dateModified: "",
+              datePublished: data.date,
+              dateModified: data.date,
               author: {
                 "@type": "Person",
                 name: username,
