@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import jwts from "jwt-simple";
 
-export default function Article() {
+export default function Article({ res }) {
   const router = useRouter();
   const { username, title, id } = router.query;
   const [data, setData] = useState({ blog: "" });
@@ -27,27 +27,8 @@ export default function Article() {
           : ""
         : "";
     };
-    async function fetcher() {
-      await axios
-        .get(`/api/single/${id}`)
-        .then((res) => setData(res.data))
-        .catch(async (e) => {
-          if (e.response) {
-            await axios
-              .get(`/api/single/${id}`)
-              .then((res) => setData(res.data))
-              .catch((e) => {
-                if (e.response) {
-                  router.push("/");
-                }
-              });
-          }
-        });
-    }
-
-    id != "[id]" ? fetcher() : "";
-    update();
-  }, [id]);
+    setData(res.data.data);
+  }, []);
   return (
     <div>
       <Head>
@@ -60,7 +41,7 @@ export default function Article() {
               colleague: [],
               image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
-              url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
+              url: `https://www.arnavgupta.net/article/${res.username}/${res.title}/${res.id}`,
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
@@ -78,15 +59,15 @@ export default function Article() {
               "@type": "Article",
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
+                "@id": `https://www.arnavgupta.net/article/${res.username}/${res.title}/${res.id}`,
               },
-              headline: title,
-              image: ["https://www.arnavgupta.net/logo.webp"],
+              headline: res.title,
+              image: [data.image],
               datePublished: "",
               dateModified: "",
               author: {
                 "@type": "Person",
-                name: username,
+                name: res.username,
               },
               publisher: {
                 "@type": "Organization",
@@ -99,12 +80,12 @@ export default function Article() {
             }),
           }}
         />
-        <title>Infinity | {title}</title>
-        <meta property="og:title" content={`Infinity | ${title}`} />
-        <meta name="twitter:title" content={`Infinity | ${title}`} />
+        <title>Infinity | {res.title}</title>
+        <meta property="og:title" content={`Infinity | ${res.title}`} />
+        <meta name="twitter:title" content={`Infinity | ${res.title}`} />
         <meta
           name="description"
-          content={`${title} | by ${username} | ${data.blog
+          content={`${res.title} | by ${res.username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -114,7 +95,7 @@ export default function Article() {
         />
         <meta
           property="og:description"
-          content={`${title} | by ${username} | ${data.blog
+          content={`${res.title} | by ${res.username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -124,7 +105,7 @@ export default function Article() {
         />
         <meta
           name="twitter:description"
-          content={`${title} | by ${username} | ${data.blog
+          content={`${res.title} | by ${res.username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -137,4 +118,15 @@ export default function Article() {
       <Footer></Footer>
     </div>
   );
+}
+export async function getServerSideProps({ params }) {
+  const res = {
+    id: params.id,
+    username: params.username,
+    title: params.title,
+  };
+  res.data = await fetch(`https://www.arnavgupta.net/api/single/${params.id}`);
+  return {
+    props: { res },
+  };
 }
