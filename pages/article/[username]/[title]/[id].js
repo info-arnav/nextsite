@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import jwts from "jwt-simple";
 
-export default function Article({ res }) {
+export default function Article() {
   const router = useRouter();
   const { username, title, id } = router.query;
   const [data, setData] = useState({ blog: "" });
@@ -27,8 +27,27 @@ export default function Article({ res }) {
           : ""
         : "";
     };
-    setData(res.data.data);
-  }, []);
+    async function fetcher() {
+      await axios
+        .get(`/api/single/${id}`)
+        .then((res) => setData(res.data))
+        .catch(async (e) => {
+          if (e.response) {
+            await axios
+              .get(`/api/single/${id}`)
+              .then((res) => setData(res.data))
+              .catch((e) => {
+                if (e.response) {
+                  router.push("/");
+                }
+              });
+          }
+        });
+    }
+
+    id != "[id]" ? fetcher() : "";
+    update();
+  }, [id]);
   return (
     <div>
       <Head>
@@ -41,7 +60,7 @@ export default function Article({ res }) {
               colleague: [],
               image: "https://www.arnavgupta.net/logo.webp",
               name: "Arnav Gupta",
-              url: `https://www.arnavgupta.net/article/${res.username}/${res.title}/${res.id}`,
+              url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               sameAs: [
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
@@ -59,15 +78,15 @@ export default function Article({ res }) {
               "@type": "Article",
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://www.arnavgupta.net/article/${res.username}/${res.title}/${res.id}`,
+                "@id": `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               },
-              headline: res.title,
-              image: [data.image],
+              headline: title,
+              image: ["https://www.arnavgupta.net/logo.webp"],
               datePublished: "",
               dateModified: "",
               author: {
                 "@type": "Person",
-                name: res.username,
+                name: username,
               },
               publisher: {
                 "@type": "Organization",
@@ -80,12 +99,12 @@ export default function Article({ res }) {
             }),
           }}
         />
-        <title>Infinity | {res.title}</title>
-        <meta property="og:title" content={`Infinity | ${res.title}`} />
-        <meta name="twitter:title" content={`Infinity | ${res.title}`} />
+        <title>Infinity | {title}</title>
+        <meta property="og:title" content={`Infinity | ${title}`} />
+        <meta name="twitter:title" content={`Infinity | ${title}`} />
         <meta
           name="description"
-          content={`${res.title} | by ${res.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -95,7 +114,7 @@ export default function Article({ res }) {
         />
         <meta
           property="og:description"
-          content={`${res.title} | by ${res.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -105,7 +124,7 @@ export default function Article({ res }) {
         />
         <meta
           name="twitter:description"
-          content={`${res.title} | by ${res.username} | ${data.blog
+          content={`${title} | by ${username} | ${data.blog
             .toString()
             .replace(
               /(<([^>]+)>)/gi,
@@ -118,15 +137,4 @@ export default function Article({ res }) {
       <Footer></Footer>
     </div>
   );
-}
-export async function getServerSideProps({ params }) {
-  const res = {
-    id: params.id,
-    username: params.username,
-    title: params.title,
-  };
-  res.data = await fetch(`https://www.arnavgupta.net/api/single/${params.id}`);
-  return {
-    props: { res },
-  };
 }
