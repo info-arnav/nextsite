@@ -7,272 +7,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function Home() {
-  useEffect(() => {
-    async function fetch() {
-      await axios
-        .get("/api/homeData")
-        .then((res) => {
-          sml(res.data[0][0]);
-          srp(res.data[1]);
-          stp(res.data[2]);
-          smv(res.data[3]);
-          sap(res.data[4]);
-        })
-        .then((e) => setLoading(true))
-        .catch(async (e) => {
-          if (e.response) {
-            await axios
-              .get("/api/homeData")
-              .then((res) => {
-                sml(res.data[0][0]);
-                srp(res.data[1]);
-                stp(res.data[2]);
-                smv(res.data[3]);
-                sap(res.data[4]);
-              })
-              .then((e) => setLoading(true))
-              .catch((e) => {
-                if (e.response) {
-                  router.push("/error");
-                }
-              });
-          }
-        });
-    }
-    fetch();
-  }, []);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-  const [ml, sml] = useState({
-    username: "username",
-    tags: "tags",
-    userdp: "/logo.webp",
-    date: "date",
-    _id: "id",
-    ddate: "display-date",
-    image: "/logo.webp",
-    blog: "blog",
-    title: "title",
-  }); // mostLiked
-  const [rp, srp] = useState([
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-  ]); //recent posts
-  const [tp, stp] = useState([
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-  ]); //top posts
-  const [mv, smv] = useState([
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-  ]); //most viewed
-  const [ap, sap] = useState([
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-    {
-      username: "username",
-      tags: "tags",
-      userdp: "/logo.webp",
-      date: "date",
-      _id: "id",
-      ddate: "display-date",
-      image: "/logo.webp",
-      blog: "blog",
-      title: "title",
-    },
-  ]); //all posts
-
+export default function Home({ res }) {
+  useEffect(() => {}, []);
+  const [ml, sml] = useState(res.data[0][0]); // mostLiked
+  const [rp, srp] = useState(res.data[1]); //recent posts
+  const [tp, stp] = useState(res.data[2]); //top posts
+  const [mv, smv] = useState(res.data[3]); //most viewed
+  const [ap, sap] = useState(res.data[4]); //all posts
   return (
     <div>
       <Head>
@@ -1082,4 +823,18 @@ export default function Home() {
       <Footer></Footer>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch("/api/homeData");
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      res,
+    },
+  };
 }
