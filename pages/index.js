@@ -827,11 +827,15 @@ export default function Home({ res }) {
   );
 }
 export async function getStaticProps() {
-  const response = await axios
+  let response;
+  await axios
     .get("https://www.arnavgupta.net/api/homeData")
+    .then(async (e) => {
+      response = e;
+    })
     .catch(async (error) => {
       if (error.response) {
-        await axios.get("https://www.arnavgupta.net/api/homeData");
+        response = await axios.get("https://www.arnavgupta.net/api/homeData");
       }
     });
   const res = response.data;
