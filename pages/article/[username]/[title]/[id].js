@@ -62,7 +62,7 @@ export default function Article({ res }) {
                 "@id": `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               },
               headline: title,
-              image: ["https://www.arnavgupta.net/logo.webp"],
+              image: [data.image],
               datePublished: "",
               dateModified: "",
               author: {
@@ -112,6 +112,15 @@ export default function Article({ res }) {
               data.blog.toString().slice(0, data.blog.indexOf("."))
             )
             .slice(0, 15)}`}
+        />
+        <meta
+          name="twitter:image"
+          content={data.image}
+          alt="The display picture of the post"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="The display picture of the post"
         />
       </Head>
 
