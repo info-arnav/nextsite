@@ -1,5 +1,4 @@
 import connectDB from "../../middleware/mongoDb";
-import mongoose from "mongoose";
 import Blog from "../../models/blogs";
 function compareLikes(a, b) {
   if (a.likes.legnth < b.likes.legnth) {

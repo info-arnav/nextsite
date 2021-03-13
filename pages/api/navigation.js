@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import algoliasearch from "algoliasearch/lite";
-import Image from "next/image";
-import { InstantSearch, SearchBox, connectHits } from "react-instantsearch-dom";
+import { InstantSearch, SearchBox } from "react-instantsearch-dom";
 import jwts from "jwt-simple";
-import { Container, Dropdown, Modal, ModalBody, Col } from "react-bootstrap";
+import { Dropdown, Modal } from "react-bootstrap";
 
 export default function Navigation() {
   const router = useRouter();

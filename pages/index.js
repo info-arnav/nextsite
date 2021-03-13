@@ -1,6 +1,5 @@
-import { loadGetInitialProps } from "next/dist/next-server/lib/utils";
 import Head from "next/head";
-import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import Navigation from "./api/navigation";
 import Footer from "./api/footer";
 import { useEffect, useState } from "react";

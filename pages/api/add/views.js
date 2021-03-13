@@ -1,7 +1,5 @@
 import connectDB from "../../../middleware/mongoDb";
-import mongoose from "mongoose";
 import Blog from "../../../models/blogs";
-import jwts from "jwt-simple";
 import User from "../../../models/user";
 
 const handler = async (req, res) => {
