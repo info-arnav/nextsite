@@ -63,7 +63,7 @@ export default function Home({ res }) {
 "
         />
       </Head>
-      <Navigation />(
+      <Navigation />
       <div>
         <Row
           style={{
