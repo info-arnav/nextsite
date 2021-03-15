@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, SearchBox } from "react-instantsearch-dom";
-import jwts from "jwt-simple";
+import jwts from "njwt";
 import { Dropdown, Modal } from "react-bootstrap";
 
 export default function Navigation() {
@@ -63,12 +63,17 @@ export default function Navigation() {
   ));
   useEffect(() => {
     localStorage.getItem("userData")
-      ? jwts.decode(
+      ? jwts.verify(
           localStorage.getItem("userData"),
-          "Arnav30080422020731017817087571441"
-        ).username
-        ? setStatus("loggedIn")
-        : setStatus("loggefOut")
+          "Arnav30080422020731017817087571441",
+          (err, verifiedJwt) => {
+            if (err) {
+              localStorage.removeItem("userData");
+            } else {
+              setStatus("loggedIn");
+            }
+          }
+        )
       : setStatus("loggefOut");
   }, []);
   return (

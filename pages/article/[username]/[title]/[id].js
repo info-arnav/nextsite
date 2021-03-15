@@ -13,18 +13,20 @@ export default function Article({ res }) {
   useEffect(() => {
     const update = async () => {
       localStorage.getItem("userData")
-        ? jwts.decode(
+        ? jwts.verify(
             localStorage.getItem("userData"),
-            "Arnav30080422020731017817087571441"
-          ).username
-          ? await axios.post("/api/add/views", {
-              user: jwts.decode(
-                localStorage.getItem("userData"),
-                "Arnav30080422020731017817087571441"
-              ).username,
-              post: id,
-            })
-          : ""
+            "Arnav30080422020731017817087571441",
+            async (err, verifiedJwt) => {
+              if (err) {
+                ("");
+              } else {
+                await axios.post("/api/add/views", {
+                  user: verifiedJwt.body.username,
+                  post: id,
+                });
+              }
+            }
+          )
         : "";
     };
     update();

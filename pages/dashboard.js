@@ -6,7 +6,7 @@ import { loadProgressBar } from "axios-progress-bar";
 import Navigation from "./api/navigation";
 import { Editor } from "@tinymce/tinymce-react";
 import { Button, Form } from "react-bootstrap";
-import jwts from "jwt-simple";
+import jwts from "njwt";
 import axios from "axios";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
@@ -24,16 +24,25 @@ export default function Dashboard() {
   const [display, setDisplay] = useState("error.png");
   const [blog, setblog] = useState("");
   const [tag, settag] = useState("");
+  const [username, setUsername] = useState("");
+  const [userdp, setUserdp] = useState("");
   const [imageUrl, setimageUrl] = useState("");
   const [status, setStatus] = useState("loggedIn");
   useEffect(() => {
     localStorage.getItem("userData")
-      ? jwts.decode(
+      ? jwts.verify(
           localStorage.getItem("userData"),
-          "Arnav30080422020731017817087571441"
-        ).username
-        ? setStatus("loggedIn")
-        : router.push("/")
+          "Arnav30080422020731017817087571441",
+          (err, verifiedJwt) => {
+            if (err) {
+              router.push("/");
+            } else {
+              setUsername(verifiedJwt.body.username);
+              setUserdp(verifiedJwt.body.userdp);
+              setStatus("loggedIn");
+            }
+          }
+        )
       : router.push("/");
   }, []);
 
@@ -43,14 +52,8 @@ export default function Dashboard() {
       .post("/api/post", {
         tags: tag,
         image: display,
-        username: jwts.decode(
-          localStorage.getItem("userData"),
-          "Arnav30080422020731017817087571441"
-        ).username,
-        userdp: jwts.decode(
-          localStorage.getItem("userData"),
-          "Arnav30080422020731017817087571441"
-        ).userdp,
+        username: username,
+        userdp: userdp,
         blog: blog,
         title: title,
       })

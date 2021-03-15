@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Footer from "./api/footer";
-import jwts from "jwt-simple";
+import jwts from "njwt";
 import Navigation from "./api/navigation";
 
 export default function Blogs() {
@@ -10,12 +10,17 @@ export default function Blogs() {
   const [status, setStatus] = useState("loggedOut");
   useEffect(() => {
     localStorage.getItem("userData")
-      ? jwts.decode(
+      ? jwts.verify(
           localStorage.getItem("userData"),
-          "Arnav30080422020731017817087571441"
-        ).username
-        ? setStatus("loggedIn")
-        : router.push("/")
+          "Arnav30080422020731017817087571441",
+          (err, verifiedJwt) => {
+            if (err) {
+              router.push("/");
+            } else {
+              setStatus("loggedIn");
+            }
+          }
+        )
       : router.push("/");
   }, []);
   return (
