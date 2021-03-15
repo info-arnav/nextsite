@@ -63,7 +63,7 @@ const handler = async (req, res) => {
       if (viewsSorted.indexOf(data[3]) > -1) {
         data.splice(viewsSorted.indexOf(data[3]), 1);
       }
-      array[2] = [viewsSorted.slice(0, 7)]; //change THis
+      array[2] = [data.slice(0, 7)]; //change THis
       array[3] = viewsSorted.slice(0, 2);
       array[4] = data.slice(4, 44);
       res.status(200).send(array);
