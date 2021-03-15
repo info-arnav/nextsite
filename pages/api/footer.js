@@ -8,14 +8,14 @@ export default function Footer() {
       <footer className="footer-bs" style={{ marginBottom: "0px" }}>
         <div className="row">
           <div className="col-md-3 footer-brand animated fadeInLeft">
-            <h2 style={{ display: "flex", alignItems: "center" }}>
+            <a href="/" style={{ display: "flex", alignItems: "center" }}>
               <img
                 style={{ display: "inline" }}
                 width="20%"
                 alt="logo"
                 src="/favicon.ico"
               ></img>{" "}
-            </h2>
+            </a>
             <p>
               <h2>Infinity</h2>
               Infinity offers an opportunity to every blogger out there to
