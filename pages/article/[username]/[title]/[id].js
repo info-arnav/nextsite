@@ -81,6 +81,7 @@ export default function Article({ res }) {
           }}
         />
         <title>Infinity | {title}</title>
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:title" content={`Infinity | ${title}`} />
         <meta name="twitter:title" content={`Infinity | ${title}`} />
         <meta
