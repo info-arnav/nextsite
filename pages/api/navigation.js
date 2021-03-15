@@ -70,6 +70,7 @@ export default function Navigation() {
             if (err) {
               localStorage.removeItem("userData");
               localStorage.setItem(
+                "userData",
                 jwts
                   .create(
                     { username: "arnav" },
