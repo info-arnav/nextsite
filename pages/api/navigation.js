@@ -69,6 +69,14 @@ export default function Navigation() {
           (err, verifiedJwt) => {
             if (err) {
               localStorage.removeItem("userData");
+              localStorage.setItem(
+                jwts
+                  .create(
+                    { username: "arnav" },
+                    "Arnav30080422020731017817087571441"
+                  )
+                  .compact()
+              );
             } else {
               setStatus("loggedIn");
             }
