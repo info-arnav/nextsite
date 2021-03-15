@@ -1,5 +1,6 @@
+import { loadGetInitialProps } from "next/dist/next-server/lib/utils";
 import Head from "next/head";
-import { Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import Navigation from "./api/navigation";
 import Footer from "./api/footer";
 import { useEffect, useState } from "react";
@@ -7,14 +8,271 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function Home({ res }) {
-  useEffect(() => {}, []);
+export default function Home() {
+  useEffect(() => {
+    async function fetch() {
+      await axios
+        .get("/api/homeData")
+        .then((res) => {
+          sml(res.data[0][0]);
+          srp(res.data[1]);
+          stp(res.data[2]);
+          smv(res.data[3]);
+          sap(res.data[4]);
+        })
+        .then((e) => setLoading(true))
+        .catch(async (e) => {
+          if (e.response) {
+            await axios
+              .get("/api/homeData")
+              .then((res) => {
+                sml(res.data[0][0]);
+                srp(res.data[1]);
+                stp(res.data[2]);
+                smv(res.data[3]);
+                sap(res.data[4]);
+              })
+              .then((e) => setLoading(true))
+              .catch((e) => {
+                if (e.response) {
+                  router.push("/error");
+                }
+              });
+          }
+        });
+    }
+    fetch();
+  }, []);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const [ml, sml] = useState(res[0][0]); // mostLiked
-  const [rp, srp] = useState(res[1]); //recent posts
-  const [tp, stp] = useState(res[2]); //top posts
-  const [mv, smv] = useState(res[3]); //most viewed
-  const [ap, sap] = useState(res[4]); //all posts
+  const [ml, sml] = useState({
+    username: "username",
+    tags: "tags",
+    userdp: "/logo.webp",
+    date: "date",
+    _id: "id",
+    ddate: "display-date",
+    image: "/logo.webp",
+    blog: "blog",
+    title: "title",
+  }); // mostLiked
+  const [rp, srp] = useState([
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+  ]); //recent posts
+  const [tp, stp] = useState([
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+  ]); //top posts
+  const [mv, smv] = useState([
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+  ]); //most viewed
+  const [ap, sap] = useState([
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+    {
+      username: "username",
+      tags: "tags",
+      userdp: "/logo.webp",
+      date: "date",
+      _id: "id",
+      ddate: "display-date",
+      image: "/logo.webp",
+      blog: "blog",
+      title: "title",
+    },
+  ]); //all posts
 
   return (
     <div>
@@ -30,7 +288,6 @@ export default function Home({ res }) {
               name: "Arnav Gupta",
               url: "https://www.arnavgupta.net/",
               sameAs: [
-                "https://www.youtube.com/channel/UCzzfqCy-j9XZA5KNosqzh6w",
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
                 "https://www.facebook.com/infinity.newTechnology",
@@ -50,18 +307,15 @@ export default function Home({ res }) {
         />
         <meta
           name="description"
-          content="Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
-"
+          content="Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
         />
         <meta
           property="og:description"
-          content="Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
-"
+          content="Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
         />
         <meta
           name="twitter:description"
-          content="Infinity is both like a website and a diary. A place where all people across the globe get a chance to put their views and talent in front of everyone.
-"
+          content="Infinity offers an opportunity to every blogger out there to display their thoughts in front of everyone. ‘Better to write for yourself and have no public, than to write for the public and have no self’. Passionate bloggers is a website where you can write your thoughts and let people live in a thousand worlds before they die."
         />
       </Head>
       <Navigation />
@@ -316,7 +570,8 @@ export default function Home({ res }) {
                   src={tp[0].image}
                   width="100%"
                   height="60%"
-                  alt="article display"
+                  Image
+                  alt="post display"
                 ></Image>
                 <h2 style={{ paddingBottom: "5px" }}>{tp[0].title}</h2>
                 <p
@@ -369,7 +624,13 @@ export default function Home({ res }) {
                       height: "100%",
                     }}
                   >
-                    <Image src={tp[1].image} height="100%" width="100%"></Image>
+                    <Image
+                      src={tp[1].image}
+                      height="100%"
+                      width="100%"
+                      Image
+                      alt="post display"
+                    ></Image>
                   </div>
                   <div style={{ display: "inline", width: "70%" }}>
                     <p
@@ -420,7 +681,13 @@ export default function Home({ res }) {
                       height: "100%",
                     }}
                   >
-                    <Image src={tp[2].image} height="100%" width="100%"></Image>
+                    <Image
+                      src={tp[2].image}
+                      height="100%"
+                      width="100%"
+                      Image
+                      alt="post display"
+                    ></Image>
                   </div>
                   <div style={{ display: "inline", width: "70%" }}>
                     <p
@@ -471,7 +738,13 @@ export default function Home({ res }) {
                       height: "100%",
                     }}
                   >
-                    <Image src={tp[3].image} height="100%" width="100%"></Image>
+                    <Image
+                      src={tp[3].image}
+                      height="100%"
+                      width="100%"
+                      Image
+                      alt="post display"
+                    ></Image>
                   </div>
                   <div style={{ display: "inline", width: "70%" }}>
                     <p
@@ -522,7 +795,13 @@ export default function Home({ res }) {
                       height: "100%",
                     }}
                   >
-                    <Image src={tp[4].image} height="100%" width="100%"></Image>
+                    <Image
+                      src={tp[4].image}
+                      height="100%"
+                      width="100%"
+                      Image
+                      alt="post display"
+                    ></Image>
                   </div>
                   <div style={{ display: "inline", width: "70%" }}>
                     <p style={{ paddingBottom: "8px", fontSize: "10px" }}>
@@ -703,6 +982,8 @@ export default function Home({ res }) {
                       <Image
                         src={tp[5].image}
                         height="100%"
+                        Image
+                        alt="post display"
                         width="100%"
                       ></Image>
                     </div>
@@ -766,6 +1047,7 @@ export default function Home({ res }) {
                       }}
                     >
                       <Image
+                        alt="post display"
                         src={tp[6].image}
                         height="100%"
                         width="100%"
@@ -827,259 +1109,8 @@ export default function Home({ res }) {
             );
           })}
         </div>
-        {""}
       </div>
       <Footer></Footer>
     </div>
   );
-}
-export async function getServerSideProps() {
-  let response = {
-    data: [
-      [
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-      ],
-      [
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-      ],
-      [
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-      ],
-      [
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-      ],
-      [
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-        {
-          username: "username",
-          tags: "tags",
-          userdp: "/logo.webp",
-          date: "date",
-          _id: "6048646cb36f7b029c05210e",
-          ddate: "display-date",
-          image: "/logo.webp",
-          blog: "blog",
-          title: "title",
-        },
-      ],
-    ],
-  };
-  await axios
-    .get("https://www.arnavgupta.net/api/homeData")
-    .then(async (e) => {
-      response = e;
-    })
-    .catch(async (error) => {
-      if (error.response) {
-        response = await axios.get("https://www.arnavgupta.net/api/homeData");
-      }
-    });
-  const res = response.data;
-  return {
-    props: { res },
-  };
 }
