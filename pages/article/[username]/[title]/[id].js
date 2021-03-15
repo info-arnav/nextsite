@@ -4,7 +4,7 @@ import Navigation from "../../../api/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import jwts from "jwt-simple";
+import jwts from "njwt";
 
 export default function Article({ res }) {
   const router = useRouter();
