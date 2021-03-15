@@ -833,7 +833,7 @@ export default function Home({ res }) {
     </div>
   );
 }
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let response = {
     data: [
       [
