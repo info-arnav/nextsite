@@ -20,7 +20,7 @@ export default function Home() {
           smv(res.data[3]);
           sap(res.data[4]);
         })
-        .then((e) => setLoading(true))
+        .then((e) => setLoading(false))
         .catch(async (e) => {
           if (e.response) {
             await axios
@@ -32,7 +32,7 @@ export default function Home() {
                 smv(res.data[3]);
                 sap(res.data[4]);
               })
-              .then((e) => setLoading(true))
+              .then((e) => setLoading(false))
               .catch((e) => {
                 if (e.response) {
                   router.push("/error");
