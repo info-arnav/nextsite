@@ -45,6 +45,7 @@ export default function Article({ res }) {
               name: "Arnav Gupta",
               url: `https://www.arnavgupta.net/article/${username}/${title}/${id}`,
               sameAs: [
+                "https://www.youtube.com/channel/UCzzfqCy-j9XZA5KNosqzh6w",
                 "https://www.instagram.com/infinity.newtech/",
                 "https://www.linkedin.com/in/arnav-gupta-0922341a9/",
                 "https://www.facebook.com/infinity.newTechnology",
