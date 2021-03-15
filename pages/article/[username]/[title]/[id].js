@@ -81,7 +81,11 @@ export default function Article({ res }) {
           }}
         />
         <title>Infinity | {title}</title>
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitterc"
+        />
         <meta property="og:title" content={`Infinity | ${title}`} />
         <meta name="twitter:title" content={`Infinity | ${title}`} />
         <meta
@@ -116,11 +120,13 @@ export default function Article({ res }) {
         />
         <meta
           name="twitter:image"
+          key="twitteri"
           content={data.image}
           alt="The display picture of the post"
         />
         <meta
           name="twitter:image:alt"
+          key="twitteria"
           content="The display picture of the post"
         />
       </Head>

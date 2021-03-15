@@ -44,14 +44,16 @@ function MyApp({ Component, pageProps }) {
         <meta property="fb:app_id" content="807904256677081" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary" key="twitterc" />
         <meta name="twitter:site" content="@infinity" />
         <meta
+          key="twitteri"
           name="twitter:image"
           content={"https://www.arnavgupta.net/logo.webp"}
           alt="The logo of the website which showcases a symbol of infinity combined to wires"
         />
         <meta
+          key="twitteria"
           name="twitter:image:alt"
           content="The logo of the website which showcases a symbol of infinity combined to wires"
         />
