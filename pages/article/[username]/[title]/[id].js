@@ -95,31 +95,22 @@ export default function Article({ res }) {
           name="description"
           content={`${title} | by ${username} | ${data.blog
             .toString()
-            .replace(
-              /(<([^>]+)>)/gi,
-              data.blog.toString().slice(0, data.blog.indexOf("."))
-            )
-            .slice(0, 15)}`}
+            .replace(/(<([^>]+)>)/gi, "")
+            .slice(0, data.blog.indexOf("."))}`}
         />
         <meta
           property="og:description"
           content={`${title} | by ${username} | ${data.blog
             .toString()
-            .replace(
-              /(<([^>]+)>)/gi,
-              data.blog.toString().slice(0, data.blog.indexOf("."))
-            )
-            .slice(0, 15)}`}
+            .replace(/(<([^>]+)>)/gi, "")
+            .slice(0, data.blog.indexOf("."))}`}
         />
         <meta
           name="twitter:description"
           content={`${title} | by ${username} | ${data.blog
             .toString()
-            .replace(
-              /(<([^>]+)>)/gi,
-              data.blog.toString().slice(0, data.blog.indexOf("."))
-            )
-            .slice(0, 15)}`}
+            .replace(/(<([^>]+)>)/gi, "")
+            .slice(0, data.blog.indexOf("."))}`}
         />
         <meta
           name="twitter:image"
