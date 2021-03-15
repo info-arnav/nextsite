@@ -312,7 +312,12 @@ export default function Home({ res }) {
               <a
                 href={`/article/${tp[0].username}/${tp[0].title}/${tp[0]._id}`}
               >
-                <Image src={tp[0].image} width="100%" height="60%"></Image>
+                <Image
+                  src={tp[0].image}
+                  width="100%"
+                  height="60%"
+                  alt="article display"
+                ></Image>
                 <h2 style={{ paddingBottom: "5px" }}>{tp[0].title}</h2>
                 <p
                   style={{
